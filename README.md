@@ -156,7 +156,7 @@ bankTransactionReconciliationJob
 Used for **transient system failures** (e.g. DB/network hiccups).
 
 ```java
-.retry(TransientDataAccessException .class)
+.retry(TransientDataAccessException.class)
 .retryLimit(3)
 ```
 
@@ -165,9 +165,9 @@ Used for **transient system failures** (e.g. DB/network hiccups).
 Used for **business-invalid records**.
 
 ```java
-.skip(InvalidTransactionException .class)
-.skip(DuplicateTransactionException .class)
-.skipLimit(100)
+.skip(InvalidTransactionException.class)
+.skip(DuplicateTransactionException.class)
+.skipLimit(10)
 ```
 
 > ✔ Bad data does NOT stop the entire job
@@ -211,7 +211,6 @@ This project **intentionally overrides that behavior**.
 .start(reconciliationStep)
 .on("*").to(reconciliationSummaryStep)
 .end()
-.build();
 ```
 
 ### Benefits
@@ -235,11 +234,18 @@ This project **intentionally overrides that behavior**.
 ### Example Log Output
 
 ```
-Step completed: reconciliationStep
-Read Count   : 10
-Write Count  : 9
-Skip Count   : 1
-Rollbacks    : 2
+======== JOB RUN REPORT ==========================
+Job StartTime   : 2026-01-02T20:26:27.674388500
+Step completed  : reconciliationStep
+Read Count      : 8
+Write Count     : 7
+Skip Count      : 1
+Commit Count    : 2
+Rollback Count  : 0
+Exception Thrown: []
+Job Status      : COMPLETED
+Job EndTime     : 2026-01-02T20:26:27.984141500
+========= END OF REPORT ===========================
 ```
 
 ---
