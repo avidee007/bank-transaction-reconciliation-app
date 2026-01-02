@@ -13,11 +13,18 @@ spring:
       idle-timeout: 300000
       max-lifetime: 1800000
       keepalive-time: 120000
+  sql:
+    init:
+      mode: always
   jpa:
+    defer-datasource-initialization: true
     open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
   batch:
+    jdbc:
+      initialize-schema: "always"
     job:
       name: bankTransactionReconciliationJob
+
