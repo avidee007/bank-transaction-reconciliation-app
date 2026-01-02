@@ -21,21 +21,29 @@ public class ReconciliationStepListener implements StepExecutionListener {
   public ExitStatus afterStep(StepExecution stepExecution) {
     log.info(
         """
+                \n======== JOB RUN REPORT ==========================
+                Job StartTime   : {}
                 Step completed  : {}
                 Read Count      : {}
                 Write Count     : {}
                 Skip Count      : {}
                 Commit Count    : {}
                 Rollback Count  : {}
-                Exit Status     : {}
+                Exception Thrown: {}
+                Job Status      : {}
+                Job EndTime     : {}
+                ========= END OF REPORT ==========================
                 """,
+        stepExecution.getStartTime(),
         stepExecution.getStepName(),
         stepExecution.getReadCount(),
         stepExecution.getWriteCount(),
         stepExecution.getSkipCount(),
         stepExecution.getCommitCount(),
         stepExecution.getRollbackCount(),
-        stepExecution.getExitStatus());
+        stepExecution.getFailureExceptions(),
+        stepExecution.getStatus(),
+        stepExecution.getEndTime());
 
     return stepExecution.getExitStatus();
   }

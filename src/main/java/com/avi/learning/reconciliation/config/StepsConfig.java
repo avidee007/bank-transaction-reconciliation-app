@@ -30,16 +30,16 @@ public class StepsConfig {
       ReconciliationStepListener listener) {
 
     return new ChunkOrientedStepBuilder<GatewayTransaction, ReconciliationResultEntity>(
-            "reconciliationStep", jobRepository, 100)
+            "reconciliationStep", jobRepository, 5)
         .reader(reader)
         .processor(processor)
-        .writer(writer)
-        .faultTolerant()
         .retry(TransientDataAccessException.class)
         .retryLimit(3)
         .skip(InvalidTransactionException.class)
         .skip(DuplicateTransactionException.class)
-        .skipLimit(100)
+        .skipLimit(10)
+        .writer(writer)
+        .faultTolerant()
         .listener(listener)
         .build();
   }
