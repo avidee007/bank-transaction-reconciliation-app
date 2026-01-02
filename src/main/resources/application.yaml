@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: bank-transaction-reconciliation
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/transaction
+    username: postgres
+    password: secret
+    hikari:
+      pool-name: txn-db-con-pool
+      maximum-pool-size: 30
+      minimum-idle: 10
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1800000
+      keepalive-time: 120000
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  batch:
+    job:
+      name: bankTransactionReconciliationJob
