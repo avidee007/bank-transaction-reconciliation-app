@@ -3,7 +3,7 @@ package com.avi.learning.reconciliation.config;
 import com.avi.learning.reconciliation.domain.GatewayTransaction;
 import com.avi.learning.reconciliation.exception.DuplicateTransactionException;
 import com.avi.learning.reconciliation.exception.InvalidTransactionException;
-import com.avi.learning.reconciliation.listner.ReconciliationStepListener;
+import com.avi.learning.reconciliation.listener.ReconciliationStepListener;
 import com.avi.learning.reconciliation.repository.ReconciliationResultEntity;
 import com.avi.learning.reconciliation.tasklet.ReconciliationSummaryTasklet;
 import org.springframework.batch.core.repository.JobRepository;
