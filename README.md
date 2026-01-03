@@ -282,7 +282,7 @@ src/main/java
      └── jpa repositories
  
 ```
-
+![updated-animated-dark-theam-arch-diagram.gif](docs/updated-animated-dark-theam-arch-diagram.gif)
 ---
 
 ## ⚙️ Technology Stack
@@ -295,6 +295,8 @@ src/main/java
 * Gradle
 
 ---
+---
+
 
 ## ▶️ Running the Job
 
